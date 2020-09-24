@@ -1,0 +1,15 @@
+#!/bin/bash -e
+
+cd "$(dirname "$0")/.."
+
+## tools/test
+## tools/test VERSION
+##
+## Runs tests on the docker container. If VERSION is not set, will test
+## the ``latest`` version; otherwise, will test the version specified. This
+## version must already have been built.
+
+VERSION=${1:-${CONTAINER_VERSION:-latest}}
+
+.venv/bin/py.test tests \
+    --container-version "${VERSION}"

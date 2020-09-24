@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+cd "$(dirname "$0")/.."
+
+## tools/prepare
+##
+## Sets up development dependencies.
+
+if [ ! -e .venv ]; then
+    pyenv exec python -m venv --prompt 'botanist-container' .venv
+    .venv/bin/pip install --quiet -r ../python/requirements.txt
+fi
+
+.venv/bin/pip-sync test-requirements.txt

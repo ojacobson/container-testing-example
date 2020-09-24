@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+(
+    cd /opt/botanist
+
+    python3 -m venv --prompt 'botanist-cli' cli
+
+    cli/bin/python -m http.server \
+        --directory python/packages \
+        &
+
+    cli/bin/pip install -r python/requirements.txt
+    cli/bin/pip-sync python/packages/botanist-cli/requirements.txt
+)
+
+ln -s /opt/botanist/cli/bin/botanist /usr/local/bin/

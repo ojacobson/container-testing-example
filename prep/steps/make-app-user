@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+adduser \
+    --no-create-home \
+    --home /app \
+    --disabled-password \
+    --gecos 'App Runner,,,,' \
+    app
+
+mkdir /app
+chown app: /app

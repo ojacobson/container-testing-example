@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+cd "$(dirname "$0")/.."
+
+## tools/pip-compile
+##
+## Rebuild dependency info.
+
+.venv/bin/pip-compile test-requirements.txt

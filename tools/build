@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+cd "$(dirname "$0")/../.."
+
+## tools/build
+## tools/build VERSION
+##
+## Builds a botanist-container image. By default, this will build with the tag
+## ``botanist-container:latest``, but the version ``latest`` can be modified
+## using the VERSION argument or, if no VERSION argument is provided, by setting
+## the CONTAINER_VERSION environment variable.
+
+VERSION=${1:-${CONTAINER_VERSION:-latest}}
+
+docker build \
+    --tag "botanist:${VERSION}" \
+    --file container/Dockerfile \
+    .

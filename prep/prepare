@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+STEPS=$(dirname "$0")/steps
+
+export DEBIAN_FRONTEND=noninteractive
+
+"$STEPS/install-packages"
+"$STEPS/install-cli"
+"$STEPS/make-app-user"

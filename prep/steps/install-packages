@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+apt-get update
+
+# apt-utils: required for debconf, which is run during later package installs
+apt-get install -y \
+    apt-utils \
+
+# ca-certificates: services on this container will talk to the internet, need a
+#                  way to bootstrap trust.
+# procps: `ps` command-line tool
+# python3: botanist tools are Python3 programs
+# python3-venv: botanist tools should not live in the site-wide Python install
+apt-get install -y \
+    ca-certificates \
+    procps \
+    python3 \
+    python3-venv \
+
+rm -rf /var/lib/apt/lists/*
